@@ -20,9 +20,12 @@ export default class Main extends Component {
   }
 
   state = {
-    // 渲染对应组件页面索引值
-    m_nSelectVPage: 0,
+    // 常量
     m_arrVPageTitle: ['首页', '拼团', '我的'],
+    // 
+    m_nSelectVPage: 0,        // 渲染索引值
+    m_objPageParams: {},      // 页面接收参数
+
   }
 
   /**
@@ -36,15 +39,29 @@ export default class Main extends Component {
   //////////////////////////////////////////////////
   // 生命周期
   //////////////////////////////////////////////////
-
+  // onLoad之前
   componentWillMount () { }
 
-  componentDidMount () { }
+  // onLoad之后
+  componentDidMount () { 
+    this.state.m_objPageParams = this.$router.params;
+    console.log('componentDidMount', this.state.m_objPageParams);
+    // 渲染显示页面
+    if (this.state.m_objPageParams.indexSelectVPage) {
+      const nSelectVPage = parseInt(this.state.m_objPageParams.indexSelectVPage);
+      this.setSelectVPage(nSelectVPage);
+    }
+  }
 
+  // onUnload
   componentWillUnmount () { }
 
-  componentDidShow () { }
+  // onShow
+  componentDidShow () { 
+    console.log('componentDidShow');
+  }
 
+  // onHide
   componentDidHide () { }
 
   // 下拉刷新
@@ -60,10 +77,9 @@ export default class Main extends Component {
   // 自定义函数
   //////////////////////////////////////////////////
   // 修改展示组件索引值
-  setSelectVPage (nSelect) {
-    console.log('setSelectVPage', nSelect);
+  setSelectVPage (nSelectVPage) {
     this.setState({
-      m_nSelectVPage: nSelect
+      m_nSelectVPage: nSelectVPage
     })
   }
 
@@ -106,6 +122,7 @@ export default class Main extends Component {
         {renderVPage}
         {/* 底部tabbar */}
         <TabbarBottom
+          nSelectVPage={m_nSelectVPage}
           setSelectVPage={this.setSelectVPage.bind(this)}
         />
       </View>

@@ -15,6 +15,7 @@ const config = {
     '@/components': path.resolve(__dirname, '..', 'src/components'),
     '@/constants': path.resolve(__dirname, '..', 'src/constants'),
     '@/kits': path.resolve(__dirname, '..', 'src/kits'),
+    '@/manager': path.resolve(__dirname, '..', 'src/manager'),
     '@/pages': path.resolve(__dirname, '..', 'src/pages'),
     '@/store': path.resolve(__dirname, '..', 'src/store')
   },

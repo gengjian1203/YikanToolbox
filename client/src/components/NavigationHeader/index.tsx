@@ -1,7 +1,10 @@
 import Taro, { Component } from "@tarojs/taro"
 import { View } from "@tarojs/components"
 import { AtNavBar } from "taro-ui";
-import { useSelector } from '@tarojs/redux';
+
+import GlobalDataManager from '@/manager/GlobalDataManager';
+
+const g_globalData = GlobalDataManager.getInstance();
 
 export default class NavigationHeader extends Component {
   state = {
@@ -40,8 +43,8 @@ export default class NavigationHeader extends Component {
       strTitle,
       isShowIcon
     } = this.props;
-    const objSystemInfo = useSelector(state => state.systemInfo);
-    const objAppInfo = useSelector(state => state.appInfo);
+    const objSystemInfo = g_globalData.objSystemInfo;
+    const objAppInfo = g_globalData.objAppInfo;
     const objPageInfo = Taro.getCurrentPages();
     
     let strIcon = '';

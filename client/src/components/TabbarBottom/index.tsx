@@ -31,8 +31,11 @@ export default class TabbarBottom extends Component {
   renderTabbar() {
     const [nSelectIndex, setSelectIndex] = useState(0);
     const {
+      nSelectVPage,
       setSelectVPage
     } = this.props;
+    // 初始化索引值
+    setSelectIndex(nSelectVPage);
 
     return (
       <AtTabBar 
@@ -64,5 +67,6 @@ export default class TabbarBottom extends Component {
 }
 
 TabbarBottom.defaultProps = {
+  nSelectVPage: 0,
   setSelectVPage: Function
 }

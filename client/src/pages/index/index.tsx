@@ -62,7 +62,7 @@ export default class Index extends Component {
   }
 
   render () {
-    this.initMiniApp();
+    // this.initMiniApp();
 
     return (
       <View className='index'>
