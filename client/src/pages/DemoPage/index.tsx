@@ -1,13 +1,13 @@
-import Taro, { Component } from '@tarojs/taro'
-import { View } from '@tarojs/components'
+import Taro, { Component } from '@tarojs/taro';
+import { View } from '@tarojs/components';
 
-import './index.scss'
+import './index.scss';
 
 import NavigationHeader from '@/components/NavigationHeader/index';
 import DemoCom1 from './components/DemoCom1/index';
 import DemoCom2 from './components/DemoCom2/index';
 
-export default class Main extends Component {
+export default class DemoPage extends Component {
   config = {
     // 支持下拉刷新
     enablePullDownRefresh: true,

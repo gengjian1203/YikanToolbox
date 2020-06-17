@@ -1,8 +1,8 @@
-import Taro, { Component } from '@tarojs/taro';
-import { View } from '@tarojs/components';
-import './index.scss';
+import Taro, { Component } from '@tarojs/taro'
+import { View } from '@tarojs/components'
+import './index.scss'
 
-export default class DemoCom2 extends Component {
+export default class DemoCom1 extends Component {
 
   /**
    * 指定config的类型声明为: Taro.Config
@@ -28,7 +28,7 @@ export default class DemoCom2 extends Component {
       <View className='demo-com-wrap'>
         {/* 内容 */}
         <View>
-          This is DemoCom2......
+          This is DemoCom1......
         </View>
       </View>
     )

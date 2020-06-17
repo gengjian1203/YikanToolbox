@@ -29,11 +29,25 @@ class App extends Component {
    * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
    */
   config: Config = {
-    pages: [
-      'pages/Activity/ActivityDetail/index',    // 拼团详情
-      'pages/DemoPage/index',                   // 示例页面
-      'pages/Main/index',                       // 首页
+    pages: [      
+      'pages/Loading/index',                    // 小程序入口，加载页
     ],
+    subPackages: [{
+      'root': 'pages/Activity/',
+      'pages': [
+        'ActivityDetail/index',                 // 拼团详情
+      ]
+    }, {
+      'root': 'pages/DemoPage/',
+      'pages': [
+        'index',                                // 示例页面
+      ]
+    }, {
+      'root': 'pages/Main/',
+      'pages': [
+        'index',                                // 首页
+      ]
+    }],
     window: {
       navigationStyle: 'custom',
     },

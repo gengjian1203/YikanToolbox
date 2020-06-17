@@ -1,6 +1,6 @@
-import Taro, { Component } from '@tarojs/taro';
-import { View } from '@tarojs/components';
-import './index.scss';
+import Taro, { Component } from '@tarojs/taro'
+import { View } from '@tarojs/components'
+import './index.scss'
 
 export default class DemoCom2 extends Component {
 
