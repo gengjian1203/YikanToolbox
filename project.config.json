@@ -42,6 +42,13 @@
 					"pathName": "pages/Main/index",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/DemoPage/index",
+					"pathName": "pages/DemoPage/index",
+					"query": "",
+					"scene": null
 				}
 			]
 		}
