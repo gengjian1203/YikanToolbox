@@ -1,0 +1,24 @@
+@import '../../app.scss';
+
+.title-bar-wrap {
+  width: 100%;
+  height: 24PX;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 3PX 0;
+
+  .title-sign {
+    width: 4PX;
+    height: 100%;
+
+    background-color: $color-brand;
+    margin-right: 16PX;
+  }
+
+  .title-text {
+    font-size: 16PX;
+    color: #2B2B2B;
+  }
+}

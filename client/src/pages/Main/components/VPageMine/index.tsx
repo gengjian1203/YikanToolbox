@@ -1,5 +1,9 @@
-import Taro, { Component } from '@tarojs/taro'
-import { View, Text } from '@tarojs/components'
+import Taro, { Component } from '@tarojs/taro';
+import { View, Text } from '@tarojs/components';
+
+import AvatarModule from './components/AvatarModule/index';
+import KitsModule from './components/KitsModule/index';
+
 import './index.scss'
 
 export default class VPageHome extends Component {
@@ -34,7 +38,10 @@ export default class VPageHome extends Component {
         
         {/* 内容 */}
         <View>
-          This is Main page......
+          {/* 头像模块 */}
+          <AvatarModule/>
+          {/* 工具模块 */}
+          <KitsModule/>
         </View>
       </View>
     )

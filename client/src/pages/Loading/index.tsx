@@ -16,6 +16,7 @@ export default class Loading extends Component {
 
   // onLoad之后
   componentDidMount () { 
+    console.log('Loading componentDidMount.');
     const strUrl = `/pages/Main/index`;
     Taro.reLaunch({
       url: strUrl,

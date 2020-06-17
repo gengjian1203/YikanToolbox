@@ -40,11 +40,19 @@ export default class TabbarBottom extends Component {
     return (
       <AtTabBar 
         fixed
-        tabList={[
-          { title: '首页', iconType: 'iconfont icon-home', selectedIconType: 'iconfont icon-home-select', text: 8 },
-          { title: '拼团', iconType: 'iconfont icon-store', selectedIconType: 'iconfont icon-store-select' },
-          { title: '我的', iconType: 'iconfont icon-mine', selectedIconType: 'iconfont icon-mine-select', dot: true }
-        ]}
+        tabList={[{ 
+          title: '首页', 
+          iconType: 'iconfont icon-home', 
+          selectedIconType: 'iconfont icon-home-select' 
+        }, { 
+          title: '拼团', 
+          iconType: 'iconfont icon-store', 
+          selectedIconType: 'iconfont icon-store-select' 
+        }, { 
+          title: '我的', 
+          iconType: 'iconfont icon-mine', 
+          selectedIconType: 'iconfont icon-mine-select', 
+        }]}
         onClick={
           (value) => {
             console.log('handleClick', value);
