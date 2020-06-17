@@ -1,12 +1,13 @@
 import Taro, { Component, Config } from '@tarojs/taro'
 import { Provider } from '@tarojs/redux';
-
 import configStore from './store';
-import Index from './pages/Main/index'
-
-import './app.scss'
-
 import GlobalDataManager from '@/manager/GlobalDataManager';
+import StorageManager from '@/manager/StorageManager';
+import webApi from '@/api/webApi';
+
+import Index from './pages/Main/index';
+
+import './app.scss';
 
 // 如果需要在 h5 环境中开启 React Devtools
 // 取消以下注释：
@@ -15,7 +16,8 @@ import GlobalDataManager from '@/manager/GlobalDataManager';
 // }
 
 const store = configStore();
-const g_globalData = GlobalDataManager.getInstance();
+const m_managerGlobalData = GlobalDataManager.getInstance();
+const m_managerStorage = StorageManager.getInstance();
 
 class App extends Component {
 
@@ -28,9 +30,8 @@ class App extends Component {
    */
   config: Config = {
     pages: [
-      'pages/Main/index',
-      'pages/index/index',
-      'pages/Activity/ActivityDetail/index'
+      'pages/Activity/ActivityDetail/index',    //
+      'pages/Main/index',                       // 首页
     ],
     window: {
       navigationStyle: 'custom',
@@ -52,7 +53,6 @@ class App extends Component {
 
   componentDidCatchError () {}
 
-
   // 初始化
   init () {
     this.initMiniApp();
@@ -64,15 +64,27 @@ class App extends Component {
     Taro.getSystemInfo({
       success: (res) => {
         console.log('Main getSystemInfo', res);
-        g_globalData.objSystemInfo = res;
+        m_managerGlobalData.objSystemInfo = res;
       },
       fail: (err) => {
         console.error('Main getSystemInfo', err);
-        g_globalData.objSystemInfo = {};
+        m_managerGlobalData.objSystemInfo = {};
       }
     });  
     // 设置小程序全局配置字段
-    g_globalData.objAppInfo.strPathMain = '/pages/Main/index';
+    m_managerGlobalData.objAppInfo.strPathMain = '/pages/Main/index';
+    // 获取用户信息
+    m_managerStorage.setStorageSync('memberInfo', {
+      aaa: '1111',
+      bbb: 222
+    });
+    // 
+    const paramsTest = {};
+    webApi.queryTestData(paramsTest).then((res) => {
+      console.log('queryTestData', res);
+    }).catch((err) => {
+      console.error('queryTestData', err);
+    });
   }
 
   // 在 App 类中的 render() 函数没有实际作用

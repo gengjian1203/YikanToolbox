@@ -4,7 +4,7 @@ import { AtNavBar } from "taro-ui";
 
 import GlobalDataManager from '@/manager/GlobalDataManager';
 
-const g_globalData = GlobalDataManager.getInstance();
+const m_managerGlobalData = GlobalDataManager.getInstance();
 
 export default class NavigationHeader extends Component {
   state = {
@@ -43,8 +43,8 @@ export default class NavigationHeader extends Component {
       strTitle,
       isShowIcon
     } = this.props;
-    const objSystemInfo = g_globalData.objSystemInfo;
-    const objAppInfo = g_globalData.objAppInfo;
+    const objSystemInfo = m_managerGlobalData.objSystemInfo;
+    const objAppInfo = m_managerGlobalData.objAppInfo;
     const objPageInfo = Taro.getCurrentPages();
     
     let strIcon = '';

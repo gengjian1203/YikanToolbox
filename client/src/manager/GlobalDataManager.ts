@@ -1,3 +1,4 @@
+// 全局变量管理器
 export default class GlobalDataManager {
   // 单例对象
   static _instance: GlobalDataManager;
@@ -11,7 +12,7 @@ export default class GlobalDataManager {
   constructor() { }
 
   static getInstance() {
-    if (this._instance == null) {
+    if (!this._instance) {
       this._instance = new GlobalDataManager();
     }
     return this._instance;
