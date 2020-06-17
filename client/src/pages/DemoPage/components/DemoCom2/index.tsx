@@ -1,8 +1,8 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Text } from '@tarojs/components'
+import { View } from '@tarojs/components'
 import './index.scss'
 
-export default class VPageHome extends Component {
+export default class DemoCom2 extends Component {
 
   /**
    * 指定config的类型声明为: Taro.Config
@@ -13,13 +13,9 @@ export default class VPageHome extends Component {
    */
   constructor() { }
 
-  componentWillMount () { 
-    console.log('VPageMine WillMount.');
-  }
+  componentWillMount () { }
 
-  componentDidMount () { 
-    console.log('VPageMine DidMount.');
-  }
+  componentDidMount () { }
 
   componentWillUnmount () { }
 
@@ -29,12 +25,10 @@ export default class VPageHome extends Component {
 
   render () {
     return (
-      <View className='home-wrap'>
-        {/* 头像 */}
-        
+      <View className='demo-com-wrap'>
         {/* 内容 */}
         <View>
-          This is Main page......
+          This is DemoCom2......
         </View>
       </View>
     )

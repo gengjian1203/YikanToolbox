@@ -30,7 +30,8 @@ class App extends Component {
    */
   config: Config = {
     pages: [
-      'pages/Activity/ActivityDetail/index',    //
+      'pages/Activity/ActivityDetail/index',    // 拼团详情
+      'pages/DemoPage/index',                   // 示例页面
       'pages/Main/index',                       // 首页
     ],
     window: {
@@ -78,13 +79,13 @@ class App extends Component {
       aaa: '1111',
       bbb: 222
     });
-    // 
-    const paramsTest = {};
-    webApi.queryTestData(paramsTest).then((res) => {
-      console.log('queryTestData', res);
-    }).catch((err) => {
-      console.error('queryTestData', err);
-    });
+    // 接口获取信息
+    // const paramsTest = {};
+    // webApi.queryTestData(paramsTest).then((res) => {
+    //   console.log('queryTestData', res);
+    // }).catch((err) => {
+    //   console.error('queryTestData', err);
+    // });
   }
 
   // 在 App 类中的 render() 函数没有实际作用
