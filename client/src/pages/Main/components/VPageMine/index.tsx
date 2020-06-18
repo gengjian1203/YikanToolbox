@@ -3,6 +3,7 @@ import { View, Text } from '@tarojs/components';
 
 import AvatarModule from './components/AvatarModule/index';
 import KitsModule from './components/KitsModule/index';
+import AdminModule from './components/AdminModule/index';
 
 import './index.scss'
 
@@ -42,6 +43,8 @@ export default class VPageHome extends Component {
           <AvatarModule/>
           {/* 工具模块 */}
           <KitsModule/>
+          {/* 管理模块 */}
+          <AdminModule/>
         </View>
       </View>
     )

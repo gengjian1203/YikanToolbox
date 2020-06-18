@@ -63,7 +63,7 @@ export default class NavigationHeader extends Component {
         <View style={`height: ${objSystemInfo.statusBarHeight}PX;`}>
         </View>
         <AtNavBar 
-          border={true}
+          border={false}
           title={strTitle}
           leftIconType={strIcon}
           onClickLeftIcon={() => this.handleLeftIconClick(objPageInfo, objAppInfo)}

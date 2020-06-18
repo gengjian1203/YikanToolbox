@@ -119,7 +119,9 @@ export default class Main extends Component {
           strTitle={m_arrVPageTitle[m_nSelectVPage]}
         />
         {/* 页面内容 */}
-        {renderVPage}
+        <View className='main-content'>
+          {renderVPage}
+        </View>
         {/* 底部tabbar */}
         <TabbarBottom
           nSelectVPage={m_nSelectVPage}

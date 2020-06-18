@@ -1,7 +1,7 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View } from '@tarojs/components';
 import { AtGrid } from 'taro-ui';
-import { TitleBar } from '@/components/TitleBar/index';
+import TitleBar from '@/components/TitleBar/index';
 
 import './index.scss';
 
@@ -49,7 +49,7 @@ export default class AvatarModule extends Component {
               value: '',
               color: 'red',
               prefixClass: 'iconfont icon-home',
-              size: '50',
+              size: 50,
             }
           }, {
             value: '工具2',
@@ -57,7 +57,7 @@ export default class AvatarModule extends Component {
               value: '',
               color: 'yellow',
               prefixClass: 'iconfont icon-home',
-              size: '50',
+              size: 50,
             }
           }, {
             value: '工具3',
@@ -65,7 +65,7 @@ export default class AvatarModule extends Component {
               value: '',
               color: 'orange',
               prefixClass: 'iconfont icon-home',
-              size: '50',
+              size: 50,
             }
           }, {
             value: '工具4',
@@ -73,7 +73,7 @@ export default class AvatarModule extends Component {
               value: '',
               color: 'green',
               prefixClass: 'iconfont icon-home',
-              size: '50',
+              size: 50,
             }
           }]}
           onClick={(item: object, index: number) => this.handleKitsItemClick(item, index)}
