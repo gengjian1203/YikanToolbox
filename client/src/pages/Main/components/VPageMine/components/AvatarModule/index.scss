@@ -1,6 +1,7 @@
 @import "../../../../../../scss/scheme.scss";
 
 .avatar-module-wrap {
+  position: relative;
   width: calc(100% + 40px);
   height: 280px;
   display: flex;
@@ -16,7 +17,7 @@
   }
 
   .content-name {
-    font-size: 36px;
+    font-size: $f3;
     color: #2B2B2B;
     margin-top: 20px;
   }
@@ -25,5 +26,6 @@
     position: absolute;
     top: 20px;
     left: 20px;
+    font-size: $f3;
   }
 }

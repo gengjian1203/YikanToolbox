@@ -17,6 +17,10 @@ export default class DemoPage extends Component {
     onReachBottomDistance: 50,
   }
 
+  static options = {
+    addGlobalClass: true
+  }
+
   state = {
     // 常量
     m_arrData: ['0', '1', '2'],

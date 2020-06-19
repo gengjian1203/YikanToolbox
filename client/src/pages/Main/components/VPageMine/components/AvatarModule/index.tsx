@@ -5,6 +5,9 @@ import { AtAvatar } from 'taro-ui';
 import './index.scss';
 
 export default class AvatarModule extends Component {
+  static options = {
+    addGlobalClass: true
+  }
 
   /**
    * 指定config的类型声明为: Taro.Config
@@ -50,7 +53,7 @@ export default class AvatarModule extends Component {
         </View>
         
         {/* 浮动菜单按钮 */}
-        <View className='iconfont icon-home'>
+        <View className='float-menu iconfont icon-home'>
         </View>
       </View>
     )

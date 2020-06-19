@@ -3,7 +3,9 @@ import { View } from '@tarojs/components';
 import './index.scss';
 
 export default class DemoCom1 extends Component {
-
+  static options = {
+    addGlobalClass: true
+  }
   /**
    * 指定config的类型声明为: Taro.Config
    *

@@ -7,6 +7,10 @@ export default class TabbarBottom extends Component {
     super(...arguments);
   }
 
+  static options = {
+    addGlobalClass: true
+  }
+
   state = {
     
   }

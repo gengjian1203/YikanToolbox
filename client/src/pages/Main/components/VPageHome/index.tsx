@@ -3,6 +3,10 @@ import { View, Text } from '@tarojs/components'
 import './index.scss'
 
 export default class VPageHome extends Component {
+  static options = {
+    addGlobalClass: true
+  }
+  
   static defaultProps = {
     setShowLoginDialog: () => {}
   }

@@ -6,7 +6,10 @@ import TitleBar from '@/components/TitleBar/index';
 import './index.scss';
 
 export default class AvatarModule extends Component {
-
+  static options = {
+    addGlobalClass: true
+  }
+  
   /**
    * 指定config的类型声明为: Taro.Config
    *

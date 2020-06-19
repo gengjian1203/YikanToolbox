@@ -6,6 +6,10 @@ import { CheckLogin } from '@/kits/decorator/index';
 
 
 export default class VPageStore extends Component {
+  static options = {
+    addGlobalClass: true
+  }
+  
   static defaultProps = {
     setShowLoginDialog: () => {}
   }
