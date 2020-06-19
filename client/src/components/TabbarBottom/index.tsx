@@ -3,8 +3,6 @@ import { View } from "@tarojs/components"
 import { AtTabBar } from "taro-ui";
 
 export default class TabbarBottom extends Component {
-  
-
   constructor() {
     super(...arguments);
   }
@@ -14,7 +12,8 @@ export default class TabbarBottom extends Component {
   }
 
   static defaultProps = {
-    
+    nSelectVPage: 0,
+    setSelectVPage: () => {}
   }
 
   componentWillMount() {}
@@ -72,9 +71,4 @@ export default class TabbarBottom extends Component {
       </View>
     )
   }
-}
-
-TabbarBottom.defaultProps = {
-  nSelectVPage: 0,
-  setSelectVPage: Function
 }

@@ -14,6 +14,10 @@ export default class TitleBar extends Component {
    */
   constructor() { }
 
+  static defaultProps = {
+    strTitle: ''
+  }
+
   componentWillMount () { }
 
   componentDidMount () { }

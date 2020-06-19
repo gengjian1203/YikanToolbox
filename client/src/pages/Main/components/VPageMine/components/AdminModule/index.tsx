@@ -39,7 +39,9 @@ export default class AvatarModule extends Component {
           strTitle='管理模块'
         />
         {/* 内容 */}
-        <AtList>
+        <AtList
+          hasBorder={false}
+        >
           <AtListItem
             title='管理模块1'
             arrow='right'

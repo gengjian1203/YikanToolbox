@@ -2,9 +2,13 @@ import Taro, { Component } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import './index.scss'
 
-import { Throttle } from '@/kits/decorator/index';
+import { CheckLogin } from '@/kits/decorator/index';
+
 
 export default class VPageStore extends Component {
+  static defaultProps = {
+    setShowLoginDialog: () => {}
+  }
 
   /**
    * 指定config的类型声明为: Taro.Config
@@ -29,8 +33,7 @@ export default class VPageStore extends Component {
 
   componentDidHide () { }
 
-  @Throttle(5000)
-  handleActivityClick() {
+  handleActivityClick () {
     console.log('handleActivityClick');
     Taro.navigateTo({
       url: '/pages/Activity/ActivityDetail/index?param=hellodetail'

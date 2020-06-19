@@ -3,7 +3,9 @@ import { View, Text } from '@tarojs/components'
 import './index.scss'
 
 export default class VPageHome extends Component {
-
+  static defaultProps = {
+    setShowLoginDialog: () => {}
+  }
   /**
    * 指定config的类型声明为: Taro.Config
    *

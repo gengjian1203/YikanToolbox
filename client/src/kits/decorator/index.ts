@@ -1,6 +1,8 @@
+import CheckLogin from "./CheckLogin";
 import Debounce from "./Debounce";
 import Throttle from "./Throttle";
 export {
-    Debounce,
-    Throttle,
+  CheckLogin,
+  Debounce,
+  Throttle,
 }

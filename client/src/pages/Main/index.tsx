@@ -25,7 +25,7 @@ export default class Main extends Component {
     // 
     m_nSelectVPage: 0,        // 渲染索引值
     m_objPageParams: {},      // 页面接收参数
-
+    m_isShowLoginDlg: false,  // 是否展示登录弹窗
   }
 
   /**
@@ -76,11 +76,18 @@ export default class Main extends Component {
   //////////////////////////////////////////////////
   // 自定义函数
   //////////////////////////////////////////////////
-  // 修改展示组件索引值
+  // 修改展示页面组件索引值
   setSelectVPage (nSelectVPage) {
     this.setState({
       m_nSelectVPage: nSelectVPage
     })
+  }
+
+  // 设置登录弹窗展示/隐藏
+  setShowLoginDialog () {
+    this.setState({
+      m_isShowLoginDlg: true
+    });
   }
 
   // 
@@ -94,19 +101,19 @@ export default class Main extends Component {
     
     switch(m_nSelectVPage) {
       case 0: {
-        renderVPage = (<VPageHome/>);
+        renderVPage = (<VPageHome setShowLoginDialog={this.setShowLoginDialog.bind(this)}/>);
         break;
       }
       case 1: {
-        renderVPage = (<VPageStore/>);
+        renderVPage = (<VPageStore setShowLoginDialog={this.setShowLoginDialog.bind(this)}/>);
         break;
       }
       case 2: {
-        renderVPage = (<VPageMine/>);
+        renderVPage = (<VPageMine setShowLoginDialog={this.setShowLoginDialog.bind(this)}/>);
         break;
       }
       default: {
-        renderVPage = (<VPageHome/>);
+        renderVPage = (<VPageHome setShowLoginDialog={this.setShowLoginDialog.bind(this)}/>);
         break;
       }
     }

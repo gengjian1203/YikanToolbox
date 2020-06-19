@@ -1,24 +1,24 @@
-// @import '../../app.scss';
+@import '../../scss/scheme.scss';
 
 .title-bar-wrap {
   width: 100%;
-  height: 24PX;
+  height: 48px;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  margin: 3PX 0;
+  margin: 6px 0;
 
   .title-sign {
-    width: 4PX;
+    width: 8px;
     height: 100%;
 
-    background-color: #FF9900;
-    margin-right: 12PX;
+    background-color: $color-primary;
+    margin-right: 20px;
   }
 
   .title-text {
-    font-size: 16PX;
+    font-size: 32px;
     color: #2B2B2B;
   }
 }

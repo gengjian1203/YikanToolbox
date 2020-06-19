@@ -8,6 +8,9 @@ import AdminModule from './components/AdminModule/index';
 import './index.scss'
 
 export default class VPageHome extends Component {
+  static defaultProps = {
+    setShowLoginDialog: () => {}
+  }
 
   /**
    * 指定config的类型声明为: Taro.Config
@@ -34,9 +37,7 @@ export default class VPageHome extends Component {
 
   render () {
     return (
-      <View className='home-wrap'>
-        {/* 头像 */}
-        
+      <View className='home-wrap'>        
         {/* 内容 */}
         <View>
           {/* 头像模块 */}

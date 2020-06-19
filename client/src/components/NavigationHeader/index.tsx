@@ -12,7 +12,8 @@ export default class NavigationHeader extends Component {
   }
 
   static defaultProps = {
-    strTitle: String
+    isShowIcon: false,
+    strTitle: ''
   }
 
   componentWillMount() {}
@@ -60,7 +61,7 @@ export default class NavigationHeader extends Component {
 
     return (
       <View className='navigation-header-wrap'>
-        <View style={`height: ${objSystemInfo.statusBarHeight}PX;`}>
+        <View style={`height: ${objSystemInfo.statusBarHeight}px;`}>
         </View>
         <AtNavBar 
           border={false}
@@ -71,8 +72,4 @@ export default class NavigationHeader extends Component {
       </View>
     )
   }
-}
-
-NavigationHeader.defaultProps = {
-  strTitle: String
 }
