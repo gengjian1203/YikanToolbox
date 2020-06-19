@@ -3,7 +3,7 @@ import { View } from '@tarojs/components';
 
 import './index.scss';
 
-export default class TitleBar extends Component {
+export default class TitleBar extends Component<any, any> {
 
   /**
    * 指定config的类型声明为: Taro.Config

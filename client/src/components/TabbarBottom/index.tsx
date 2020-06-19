@@ -2,7 +2,7 @@ import Taro, { Component, useState } from "@tarojs/taro"
 import { View } from "@tarojs/components"
 import { AtTabBar } from "taro-ui";
 
-export default class TabbarBottom extends Component {
+export default class TabbarBottom extends Component<any, any> {
   constructor() {
     super(...arguments);
   }

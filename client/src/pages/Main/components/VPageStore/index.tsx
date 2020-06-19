@@ -2,10 +2,7 @@ import Taro, { Component } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import './index.scss'
 
-import { CheckLogin } from '@/kits/decorator/index';
-
-
-export default class VPageStore extends Component {
+export default class VPageStore extends Component<any, any> {
   static options = {
     addGlobalClass: true
   }

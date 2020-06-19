@@ -5,6 +5,7 @@ import './index.scss'
 
 import NavigationHeader from '@/components/NavigationHeader/index';
 import TabbarBottom from '@/components/TabbarBottom/index';
+import LoginDialog from '@/components/LoginDialog/index';
 import VPageHome from './components/VPageHome/index';
 import VPageMine from './components/VPageMine/index';
 import VPageStore from './components/VPageStore/index';
@@ -84,17 +85,24 @@ export default class Main extends Component {
   }
 
   // 设置登录弹窗展示/隐藏
-  setShowLoginDialog () {
+  setShowLoginDialog (isShow: boolean) {
+    console.log('setShowLoginDialog', isShow);
     this.setState({
-      m_isShowLoginDlg: true
+      m_isShowLoginDlg: isShow
     });
+  }
+
+  // 测试按钮
+  handleTestClick () {
+    this.setShowLoginDialog(true);
   }
 
   // 
   render () {
     const {
-      m_nSelectVPage,
-      m_arrVPageTitle
+      m_nSelectVPage,           // 选中的页面
+      m_arrVPageTitle,          // 首页列表的页面名称
+      m_isShowLoginDlg,         // 是否展示登录弹窗
     } = this.state;
 
     let renderVPage: any = null;
@@ -128,7 +136,17 @@ export default class Main extends Component {
         {/* 页面内容 */}
         <View className='main-content'>
           {renderVPage}
+          <View
+            onClick={() => this.handleTestClick()}
+          >
+            点击测试
+          </View>
         </View>
+        {/* 弹出内容 */}
+        <LoginDialog
+          isOpened={m_isShowLoginDlg}
+          setShowLoginDialog={this.setShowLoginDialog.bind(this)}
+        />
         {/* 底部tabbar */}
         <TabbarBottom
           nSelectVPage={m_nSelectVPage}

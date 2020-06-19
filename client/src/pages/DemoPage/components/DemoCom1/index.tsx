@@ -2,7 +2,7 @@ import Taro, { Component } from '@tarojs/taro';
 import { View } from '@tarojs/components';
 import './index.scss';
 
-export default class DemoCom1 extends Component {
+export default class DemoCom1 extends Component<any, any> {
   static options = {
     addGlobalClass: true
   }

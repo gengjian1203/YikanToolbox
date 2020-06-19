@@ -6,7 +6,7 @@ import GlobalDataManager from '@/manager/GlobalDataManager';
 
 const m_managerGlobalData = GlobalDataManager.getInstance();
 
-export default class NavigationHeader extends Component {
+export default class NavigationHeader extends Component<any, any> {
   state = {
     
   }

@@ -1,21 +1,21 @@
-// import { SYSTEM_INFO } from '../constants/systemInfo';
+import { SYSTEM_INFO } from '../constants/systemInfo';
 
-// function setSystemInfo (objSystemInfo) {
-//   return {
-//     type: SYSTEM_INFO,
-//     data: objSystemInfo
-//   }
-// }
+function setSystemInfo (objSystemInfo) {
+  return {
+    type: SYSTEM_INFO,
+    data: objSystemInfo
+  }
+}
 
-// function getSystemInfo () {
-//   return {
-//     type: SYSTEM_INFO,
-//     data: null
-//   }
-// }
+function getSystemInfo () {
+  return {
+    type: SYSTEM_INFO,
+    data: null
+  }
+}
 
 
-// export default {
-//   setSystemInfo,
-//   getSystemInfo
-// }
+export default {
+  setSystemInfo,
+  getSystemInfo
+}
