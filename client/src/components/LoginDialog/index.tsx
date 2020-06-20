@@ -47,7 +47,6 @@ export default class NavigationHeader extends Component<any, any> {
     const {
       isOpened,
     } = this.props;
-    console.log('render', isOpened);
 
     return (
       <View className='login-dialog-wrap'>

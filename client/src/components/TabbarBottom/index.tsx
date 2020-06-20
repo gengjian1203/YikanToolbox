@@ -2,7 +2,16 @@ import Taro, { Component, useState } from "@tarojs/taro"
 import { View } from "@tarojs/components"
 import { AtTabBar } from "taro-ui";
 
-type PageStateProps = { };
+import { 
+  connect 
+} from '@tarojs/redux';
+import { 
+  MainPageInfoType 
+} from '@/constants/MainPageInfo';
+
+type PageStateProps = { 
+  MainPageInfo: MainPageInfoType;
+};
 
 type PageDispatchProps = { };
 
@@ -15,6 +24,12 @@ type PageState = { };
 type IProps = PageStateProps & PageDispatchProps & PageOwnProps;
 
 type IState = PageState;
+
+@connect(
+  ({ MainPageInfo }) => ({
+    MainPageInfo
+  })
+)
 export default class TabbarBottom extends Component<IProps, IState> {
   constructor() {
     super(...arguments);
@@ -24,13 +39,13 @@ export default class TabbarBottom extends Component<IProps, IState> {
     addGlobalClass: true
   }
 
-  state = {
-    nSelectIndex: 0
+  state = { }
+
+  componentWillMount() {
+    
   }
 
-  componentWillMount() {}
-
-  componentDidMount() {}
+  componentDidMount() { }
 
   componentWillUnmount() {}
 
@@ -41,9 +56,7 @@ export default class TabbarBottom extends Component<IProps, IState> {
   // 函数式组件
   renderTabbar() {
     const {
-      nSelectIndex
-    } = this.state;
-    const {
+      MainPageInfo,
       setMainPageSelect
     } = this.props;
 
@@ -65,16 +78,12 @@ export default class TabbarBottom extends Component<IProps, IState> {
         }]}
         onClick={
           (value) => {
-            if (value !== nSelectIndex) {
-              console.log('handleClick', value);
+            if (value !== MainPageInfo.nSelectIndex) {
               setMainPageSelect(value);
-              this.setState({
-                nSelectIndex: value
-              });
             }
           }
         }
-        current={nSelectIndex}
+        current={MainPageInfo.nSelectIndex}
       />
     )
   }

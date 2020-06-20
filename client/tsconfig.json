@@ -24,6 +24,8 @@
       "@/kits/*": ["./src/kits/*"],
       "@/manager/*": ["./src/manager/*"],
       "@/pages/*": ["./src/pages/*"],
+      "@/scss/*": ["./src/scss/*"],
+      "@/services/*": ["./src/services/*"],
       "@/reducers/*": ["./src/reducers/*"],
       "@/store/*": ["./src/store/*"]
     },

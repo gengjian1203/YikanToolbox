@@ -1,7 +1,12 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View } from '@tarojs/components';
 
+import GlobalDataManager from '@/manager/GlobalDataManager';
+import router2url from '@/kits/format/router2url';
+
 import './index.scss'
+
+const m_managerGlobalData = GlobalDataManager.getInstance();
 
 export default class Loading extends Component {
   config = { }
@@ -12,16 +17,14 @@ export default class Loading extends Component {
   // 生命周期
   //////////////////////////////////////////////////
   // onLoad之前
-  componentWillMount () { }
+  componentWillMount () { 
+    Taro.reLaunch({
+      url: router2url(m_managerGlobalData.objAppInfo.strPathMain, this.$router),
+    });
+  }
 
   // onLoad之后
-  componentDidMount () { 
-    console.log('Loading componentDidMount.');
-    const strUrl = `/pages/Main/index`;
-    Taro.reLaunch({
-      url: strUrl,
-    })
-  }
+  componentDidMount () { }
 
   // onUnload
   componentWillUnmount () { }

@@ -21,6 +21,8 @@ const config = {
     '@/manager': path.resolve(__dirname, '..', 'src/manager'),
     '@/pages': path.resolve(__dirname, '..', 'src/pages'),
     '@/reducers': path.resolve(__dirname, '..', 'src/reducers'),
+    '@/scss': path.resolve(__dirname, '..', 'src/scss'),
+    '@/services': path.resolve(__dirname, '..', 'src/services'),
     '@/store': path.resolve(__dirname, '..', 'src/store')
   },
   babel: {

@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import appInfo from './appInfo';
 import MainPageInfo from './MainPageInfo';
-import systemInfo from './systemInfo';
+import SystemInfo from './SystemInfo';
 
 export default combineReducers ({
   appInfo,
   MainPageInfo,
-  systemInfo
+  SystemInfo
 });

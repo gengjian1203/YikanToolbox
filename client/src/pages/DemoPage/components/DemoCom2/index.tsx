@@ -2,7 +2,18 @@ import Taro, { Component } from '@tarojs/taro';
 import { View } from '@tarojs/components';
 import './index.scss';
 
-export default class DemoCom2 extends Component<any, any> {
+type PageStateProps = { };
+
+type PageDispatchProps = { };
+
+type PageOwnProps = { };
+
+type PageState = { };
+
+type IProps = PageStateProps & PageDispatchProps & PageOwnProps;
+
+type IState = PageState;
+export default class DemoCom2 extends Component<IProps, IState> {
   static options = {
     addGlobalClass: true
   }

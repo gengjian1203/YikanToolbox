@@ -9,7 +9,7 @@ export default function systemInfo (state = INITIAL_STATE, action) {
     case SET_SYSTEM: 
       return {
         ...state,
-        ...action.data
+        ...action.objSystemInfo
       }
     default:
       return {

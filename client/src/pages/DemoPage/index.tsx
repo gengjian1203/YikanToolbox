@@ -7,7 +7,26 @@ import NavigationHeader from '@/components/NavigationHeader/index';
 import DemoCom1 from './components/DemoCom1/index';
 import DemoCom2 from './components/DemoCom2/index';
 
-export default class DemoPage extends Component {
+type PageStateProps = { };
+
+type PageDispatchProps = { };
+
+type PageOwnProps = { };
+
+type PageState = {
+  m_arrData: Array<string>,
+  m_isBoolean: boolean,
+  m_nNumber: number,
+  m_strString: string,
+  m_objData: object,
+  m_objPageParams: object
+};
+
+type IProps = PageStateProps & PageDispatchProps & PageOwnProps;
+
+type IState = PageState;
+
+export default class DemoPage extends Component<IProps, IState> {
   config = {
     // 支持下拉刷新
     enablePullDownRefresh: true,
@@ -32,6 +51,7 @@ export default class DemoPage extends Component {
       strTrue: 'True......',
       strFalse: 'False......'
     },
+    m_objPageParams: {}
   }
 
   /**
@@ -75,12 +95,6 @@ export default class DemoPage extends Component {
   //////////////////////////////////////////////////
   // 自定义函数
   //////////////////////////////////////////////////
-  // 修改展示组件索引值
-  setSelectVPage (nSelectVPage) {
-    this.setState({
-      m_nSelectVPage: nSelectVPage
-    })
-  }
 
   // 
   render () {

@@ -9,13 +9,13 @@ import VPageStore from './components/VPageStore/index';
 
 import { 
   connect 
-} from "@tarojs/redux";
-import { 
-  setMainPageSelect,
-} from "@/actions/MainPageInfo";
+} from '@tarojs/redux';
 import { 
   MainPageInfoType 
-} from "@/constants/MainPageInfo";
+} from '@/constants/MainPageInfo';
+import { 
+  setMainPageSelect,
+} from '@/actions/MainPageInfo';
 
 import './index.scss';
 
@@ -43,11 +43,11 @@ type IProps = PageStateProps & PageDispatchProps & PageOwnProps;
 type IState = PageState;
 
 @connect(
-  ({MainPageInfo}) => ({
-    MainPageInfo: MainPageInfo
+  ({ MainPageInfo }) => ({
+    MainPageInfo
   }),
   dispatch => ({
-    setMainPageSelect (nSelectIndex) {
+    setMainPageSelect (nSelectIndex: number) {
       dispatch(setMainPageSelect(nSelectIndex));
     }
   })
@@ -81,24 +81,26 @@ export default class Main extends Component<IProps, IState> {
   // 生命周期
   //////////////////////////////////////////////////
   // onLoad之前
-  componentWillMount () { }
-
-  // onLoad之后
-  componentDidMount () { 
+  componentWillMount () {
+    const m_objPageParams =  this.$router.params;
     const {
-      m_objPageParams
-    } = this.state;
+      setMainPageSelect
+    } = this.props;
 
     this.setState({
       m_objPageParams: this.$router.params
-    })
-    console.log('componentDidMount', m_objPageParams);
+    });
+
+    // console.log('Main componentDidMount', this.$router.params, m_objPageParams);
     // 渲染显示页面
     if (m_objPageParams.indexSelectVPage) {
       const nSelectVPage = parseInt(m_objPageParams.indexSelectVPage);
-      this.setSelectVPage(nSelectVPage);
+      setMainPageSelect(nSelectVPage);
     }
   }
+
+  // onLoad之后
+  componentDidMount () { }
 
   // onUnload
   componentWillUnmount () { }
