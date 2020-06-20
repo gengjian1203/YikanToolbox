@@ -1,1 +1,1 @@
-export const SET_MAIN_PATH = 'SET_MAIN_PATH';
+export const SET_MAIN_PATH: string = 'SET_MAIN_PATH';

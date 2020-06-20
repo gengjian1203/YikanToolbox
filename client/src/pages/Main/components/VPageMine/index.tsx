@@ -7,7 +7,7 @@ import AdminModule from './components/AdminModule/index';
 
 import './index.scss'
 
-export default class VPageHome extends Component {
+export default class VPageHome extends Component<any, any> {
   static options = {
     addGlobalClass: true
   }

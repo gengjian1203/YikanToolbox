@@ -2,7 +2,20 @@ import Taro, { Component, useState } from "@tarojs/taro"
 import { View } from "@tarojs/components"
 import { AtTabBar } from "taro-ui";
 
-export default class TabbarBottom extends Component<any, any> {
+type PageStateProps = { };
+
+type PageDispatchProps = { };
+
+type PageOwnProps = { 
+  setMainPageSelect: (nSelectIndex: number) => any;
+};
+
+type PageState = { };
+
+type IProps = PageStateProps & PageDispatchProps & PageOwnProps;
+
+type IState = PageState;
+export default class TabbarBottom extends Component<IProps, IState> {
   constructor() {
     super(...arguments);
   }
@@ -12,12 +25,7 @@ export default class TabbarBottom extends Component<any, any> {
   }
 
   state = {
-    
-  }
-
-  static defaultProps = {
-    nSelectVPage: 0,
-    setSelectVPage: () => {}
+    nSelectIndex: 0
   }
 
   componentWillMount() {}
@@ -32,13 +40,12 @@ export default class TabbarBottom extends Component<any, any> {
 
   // 函数式组件
   renderTabbar() {
-    const [nSelectIndex, setSelectIndex] = useState(0);
     const {
-      nSelectVPage,
-      setSelectVPage
+      nSelectIndex
+    } = this.state;
+    const {
+      setMainPageSelect
     } = this.props;
-    // 初始化索引值
-    setSelectIndex(nSelectVPage);
 
     return (
       <AtTabBar 
@@ -58,9 +65,13 @@ export default class TabbarBottom extends Component<any, any> {
         }]}
         onClick={
           (value) => {
-            console.log('handleClick', value);
-            setSelectIndex(value);
-            setSelectVPage(value);
+            if (value !== nSelectIndex) {
+              console.log('handleClick', value);
+              setMainPageSelect(value);
+              this.setState({
+                nSelectIndex: value
+              });
+            }
           }
         }
         current={nSelectIndex}

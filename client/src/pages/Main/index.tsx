@@ -1,8 +1,5 @@
-import Taro, { Component } from '@tarojs/taro'
-import { View } from '@tarojs/components'
-
-import './index.scss'
-
+import Taro, { Component } from '@tarojs/taro';
+import { View } from '@tarojs/components';
 import NavigationHeader from '@/components/NavigationHeader/index';
 import TabbarBottom from '@/components/TabbarBottom/index';
 import LoginDialog from '@/components/LoginDialog/index';
@@ -10,7 +7,52 @@ import VPageHome from './components/VPageHome/index';
 import VPageMine from './components/VPageMine/index';
 import VPageStore from './components/VPageStore/index';
 
-export default class Main extends Component {
+import { 
+  connect 
+} from "@tarojs/redux";
+import { 
+  setMainPageSelect,
+} from "@/actions/MainPageInfo";
+import { 
+  MainPageInfoType 
+} from "@/constants/MainPageInfo";
+
+import './index.scss';
+
+type PageStateProps = {
+  MainPageInfo: MainPageInfoType;
+};
+
+type PageDispatchProps = {
+  setMainPageSelect: (nSelectIndex: number) => any;
+};
+
+type PageOwnProps = {
+  
+};
+
+type PageState = {
+  m_arrVPageTitle: Array<string>,       // 底部导航名称常量
+  m_nSelectVPage: number,               // 渲染索引值
+  m_objPageParams: object,              // 页面接收参数
+  m_isShowLoginDlg: boolean,            // 是否展示登录弹窗
+};
+
+type IProps = PageStateProps & PageDispatchProps & PageOwnProps;
+
+type IState = PageState;
+
+@connect(
+  ({MainPageInfo}) => ({
+    MainPageInfo: MainPageInfo
+  }),
+  dispatch => ({
+    setMainPageSelect (nSelectIndex) {
+      dispatch(setMainPageSelect(nSelectIndex));
+    }
+  })
+)
+export default class Main extends Component<IProps, IState> {
   config = {
     // 支持下拉刷新
     enablePullDownRefresh: true,
@@ -21,12 +63,10 @@ export default class Main extends Component {
   }
 
   state = {
-    // 常量
-    m_arrVPageTitle: ['首页', '拼团', '我的'],
-    // 
-    m_nSelectVPage: 0,        // 渲染索引值
-    m_objPageParams: {},      // 页面接收参数
-    m_isShowLoginDlg: false,  // 是否展示登录弹窗
+    m_arrVPageTitle: ['首页', '拼团', '我的'],    // 底部导航名称常量
+    m_nSelectVPage: 0,                          // 渲染索引值
+    m_objPageParams: {},                        // 页面接收参数
+    m_isShowLoginDlg: false,                    // 是否展示登录弹窗
   }
 
   /**
@@ -45,11 +85,17 @@ export default class Main extends Component {
 
   // onLoad之后
   componentDidMount () { 
-    this.state.m_objPageParams = this.$router.params;
-    console.log('componentDidMount', this.state.m_objPageParams);
+    const {
+      m_objPageParams
+    } = this.state;
+
+    this.setState({
+      m_objPageParams: this.$router.params
+    })
+    console.log('componentDidMount', m_objPageParams);
     // 渲染显示页面
-    if (this.state.m_objPageParams.indexSelectVPage) {
-      const nSelectVPage = parseInt(this.state.m_objPageParams.indexSelectVPage);
+    if (m_objPageParams.indexSelectVPage) {
+      const nSelectVPage = parseInt(m_objPageParams.indexSelectVPage);
       this.setSelectVPage(nSelectVPage);
     }
   }
@@ -58,9 +104,7 @@ export default class Main extends Component {
   componentWillUnmount () { }
 
   // onShow
-  componentDidShow () { 
-    console.log('componentDidShow');
-  }
+  componentDidShow () { }
 
   // onHide
   componentDidHide () { }
@@ -77,13 +121,6 @@ export default class Main extends Component {
   //////////////////////////////////////////////////
   // 自定义函数
   //////////////////////////////////////////////////
-  // 修改展示页面组件索引值
-  setSelectVPage (nSelectVPage) {
-    this.setState({
-      m_nSelectVPage: nSelectVPage
-    })
-  }
-
   // 设置登录弹窗展示/隐藏
   setShowLoginDialog (isShow: boolean) {
     console.log('setShowLoginDialog', isShow);
@@ -100,14 +137,17 @@ export default class Main extends Component {
   // 
   render () {
     const {
-      m_nSelectVPage,           // 选中的页面
       m_arrVPageTitle,          // 首页列表的页面名称
       m_isShowLoginDlg,         // 是否展示登录弹窗
     } = this.state;
+    const {
+      MainPageInfo,
+      setMainPageSelect
+    } = this.props;
 
     let renderVPage: any = null;
     
-    switch(m_nSelectVPage) {
+    switch(MainPageInfo.nSelectIndex) {
       case 0: {
         renderVPage = (<VPageHome setShowLoginDialog={this.setShowLoginDialog.bind(this)}/>);
         break;
@@ -131,7 +171,7 @@ export default class Main extends Component {
         {/* 头部导航 */}
         <NavigationHeader 
           isShowIcon={false}
-          strTitle={m_arrVPageTitle[m_nSelectVPage]}
+          strTitle={m_arrVPageTitle[MainPageInfo.nSelectIndex]}
         />
         {/* 页面内容 */}
         <View className='main-content'>
@@ -149,8 +189,7 @@ export default class Main extends Component {
         />
         {/* 底部tabbar */}
         <TabbarBottom
-          nSelectVPage={m_nSelectVPage}
-          setSelectVPage={this.setSelectVPage.bind(this)}
+          setMainPageSelect={setMainPageSelect.bind(this)}
         />
       </View>
     )

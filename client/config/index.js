@@ -13,12 +13,14 @@ const config = {
   outputRoot: 'dist',
   alias: {
     '@/': path.resolve(__dirname, '..', 'src'),
+    '@/actions': path.resolve(__dirname, '..', 'src/actions'),
     '@/api': path.resolve(__dirname, '..', 'src/api'),
     '@/components': path.resolve(__dirname, '..', 'src/components'),
     '@/constants': path.resolve(__dirname, '..', 'src/constants'),
     '@/kits': path.resolve(__dirname, '..', 'src/kits'),
     '@/manager': path.resolve(__dirname, '..', 'src/manager'),
     '@/pages': path.resolve(__dirname, '..', 'src/pages'),
+    '@/reducers': path.resolve(__dirname, '..', 'src/reducers'),
     '@/store': path.resolve(__dirname, '..', 'src/store')
   },
   babel: {

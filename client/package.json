@@ -31,8 +31,8 @@
 	"dependencies": {
 		"@tarojs/components": "2.1.5",
 		"@tarojs/components-qa": "2.1.5",
-		"@tarojs/redux": "^2.2.7",
-		"@tarojs/redux-h5": "^2.2.7",
+		"@tarojs/redux": "2.1.5",
+		"@tarojs/redux-h5": "2.1.5",
 		"@tarojs/router": "2.1.5",
 		"@tarojs/taro": "2.1.5",
 		"@tarojs/taro-alipay": "2.1.5",

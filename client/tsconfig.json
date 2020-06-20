@@ -17,12 +17,14 @@
     "rootDir": ".",
     "paths": {
       "@/*": ["./src/*"],
+      "@/actions/*": ["./src/actions/*"],
       "@/api/*": ["./src/api/*"],
       "@/components/*": ["./src/components/*"],
       "@/constants/*": ["./src/constants/*"],
       "@/kits/*": ["./src/kits/*"],
       "@/manager/*": ["./src/manager/*"],
       "@/pages/*": ["./src/pages/*"],
+      "@/reducers/*": ["./src/reducers/*"],
       "@/store/*": ["./src/store/*"]
     },
     "jsx": "preserve",
