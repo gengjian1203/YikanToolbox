@@ -1,11 +1,13 @@
 import CheckLogin from './CheckLogin';
 import Debounce from './Debounce';
+import Demo from './Demo';
+import DemoComponent from './DemoComponent';
 import Throttle from './Throttle';
-import WithShare from './WithShare';
 
 export {
   CheckLogin,
   Debounce,
+  Demo,
+  DemoComponent,
   Throttle,
-  WithShare
 }

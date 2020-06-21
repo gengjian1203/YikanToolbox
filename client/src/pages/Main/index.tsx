@@ -100,7 +100,9 @@ export default class Main extends Component<IProps, IState> {
   }
 
   // onLoad之后
-  componentDidMount () { }
+  componentDidMount () { 
+    console.log('MainPage componentDidMount.');
+  }
 
   // onUnload
   componentWillUnmount () { }

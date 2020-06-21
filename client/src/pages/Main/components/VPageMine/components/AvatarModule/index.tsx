@@ -1,11 +1,11 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Text } from '@tarojs/components';
 import { AtAvatar } from 'taro-ui';
-import { WithShare } from '@/kits/decorator/index';
+import { Throttle } from '@/kits/decorator/index';
 
 import './index.scss';
 
-// @WithShare()
+@Throttle(['handleAvatarClick'], 2000)
 export default class AvatarModule extends Component {
   static options = {
     addGlobalClass: true
