@@ -1,9 +1,11 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Text } from '@tarojs/components';
 import { AtAvatar } from 'taro-ui';
+import { WithShare } from '@/kits/decorator/index';
 
 import './index.scss';
 
+// @WithShare()
 export default class AvatarModule extends Component {
   static options = {
     addGlobalClass: true
@@ -30,7 +32,7 @@ export default class AvatarModule extends Component {
 
   // 点击头像，拉起登录授权
   handleAvatarClick () {
-
+    console.log('handleAvatarClick');
   }
 
   render () {

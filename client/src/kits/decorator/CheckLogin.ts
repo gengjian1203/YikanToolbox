@@ -58,13 +58,12 @@ function CheckLogin(lifecycle = 'willMount') {
       }
     }
       
-    $_autoLogin = () => {
-      // ...这里是登录逻辑
-      console.log('llllllogin...');
-    }
+    // $_autoLogin = () => {
+    //   // ...这里是登录逻辑
+    //   console.log('llllllogin...');
+    // }
   }
+}
 
 
 export default CheckLogin;
-
-
