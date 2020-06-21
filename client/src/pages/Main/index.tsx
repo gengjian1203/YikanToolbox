@@ -185,10 +185,12 @@ export default class Main extends Component<IProps, IState> {
           </View>
         </View>
         {/* 弹出内容 */}
-        <LoginDialog
-          isOpened={m_isShowLoginDlg}
-          setShowLoginDialog={this.setShowLoginDialog.bind(this)}
-        />
+        { 
+          m_isShowLoginDlg &&
+          <LoginDialog
+            setShowLoginDialog={this.setShowLoginDialog.bind(this)}
+          />
+        }
         {/* 底部tabbar */}
         <TabbarBottom
           setMainPageSelect={setMainPageSelect.bind(this)}

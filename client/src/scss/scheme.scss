@@ -13,6 +13,7 @@ $color-tertiary: lighten($color-primary, 20%);
 
 $color-line: #ececec; // 分割线颜色
 $color-bg: #ebebeb; // 背景色
+$color-mask: rgba(0, 0, 0, 0.3);  // 蒙板颜色
 
 $color-text-primary: #000000; // 主内容
 $color-text-long: #353535; // 大段说明的主要内容

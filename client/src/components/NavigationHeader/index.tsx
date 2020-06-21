@@ -2,11 +2,17 @@ import Taro, { Component } from "@tarojs/taro"
 import { View } from "@tarojs/components"
 import { AtNavBar } from "taro-ui";
 
+import './index.scss';
+
 import GlobalDataManager from '@/manager/GlobalDataManager';
 
 const m_managerGlobalData = GlobalDataManager.getInstance();
 
 export default class NavigationHeader extends Component<any, any> {
+  static options = {
+    addGlobalClass: true
+  }
+
   state = {
     
   }
@@ -63,7 +69,7 @@ export default class NavigationHeader extends Component<any, any> {
       <View className='navigation-header-wrap'>
         <View style={`height: ${objSystemInfo.statusBarHeight}px;`}>
         </View>
-        <AtNavBar 
+        <AtNavBar
           border={false}
           title={strTitle}
           leftIconType={strIcon}

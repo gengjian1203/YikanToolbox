@@ -2,6 +2,8 @@ import Taro, { Component, useState } from "@tarojs/taro"
 import { View } from "@tarojs/components"
 import { AtTabBar } from "taro-ui";
 
+import './index.scss';
+
 import { 
   connect 
 } from '@tarojs/redux';

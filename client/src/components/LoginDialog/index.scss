@@ -1,3 +1,55 @@
+@import '../../scss/scheme.scss';
+
 .login-dialog-wrap {
-  
+  // overflow: hidden;
+  // border-radius: 20px 20px 0 0;
+  // background-color: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10000;
+
+  .login-dialog-mask {
+    width: 100%;
+    height: 100%;
+
+    background: $color-mask;
+
+    .login-dialog-content {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 240px;
+      
+      border-radius: 20px 20px 0 0;
+      background-color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+
+      .content-text {
+        font-size: $f4;
+        color: $color-text-long;
+        margin: 20px 0;
+      }
+
+      .content-button {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        width: 80%;
+        height: 100px;
+        font-size: $f3;
+        color: #ffffff;
+        background-color: $color-primary;
+      }
+    }
+  }
 }
