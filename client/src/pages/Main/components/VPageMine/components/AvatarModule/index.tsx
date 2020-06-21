@@ -37,7 +37,7 @@ export default class AvatarModule extends Component {
     return (
       <View 
         className='avatar-module-wrap'
-        onClick={() => {this.handleAvatarClick()}}
+        onClick={this.handleAvatarClick.bind(this)}
       >
         {/* 头像 */}
         <AtAvatar

@@ -79,7 +79,7 @@ export default class AvatarModule extends Component {
               size: 50,
             }
           }]}
-          onClick={(item: object, index: number) => this.handleKitsItemClick(item, index)}
+          onClick={this.handleKitsItemClick.bind(this)}
         />
       </View>
     )

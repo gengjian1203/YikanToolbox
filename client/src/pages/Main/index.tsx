@@ -179,7 +179,7 @@ export default class Main extends Component<IProps, IState> {
         <View className='main-content'>
           {renderVPage}
           <View
-            onClick={() => this.handleTestClick()}
+            onClick={this.handleTestClick.bind(this)}
           >
             点击测试
           </View>

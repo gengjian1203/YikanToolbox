@@ -48,17 +48,17 @@ export default class VPageStore extends Component<any, any> {
         <View>
           This is Store page......
           <View 
-            onClick={() => this.handleActivityClick()}
+            onClick={this.handleActivityClick.bind(this)}
           >
             黄瓜拼团
           </View>
           <View 
-            onClick={() => this.handleActivityClick()}
+            onClick={this.handleActivityClick.bind(this)}
           >
             冬瓜拼团
           </View>
           <View 
-            onClick={() => this.handleActivityClick()}
+            onClick={this.handleActivityClick.bind(this)}
           >
             南瓜拼团
           </View>

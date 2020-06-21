@@ -54,7 +54,7 @@ export default class AvatarModule extends Component {
               prefixClass: 'iconfont icon-home',
               size: 25,
             }}
-            onClick={() => this.handleAdminItemClick()}
+            onClick={this.handleAdminItemClick.bind(this)}
           />
           <AtListItem
             title='管理模块2'
@@ -65,7 +65,7 @@ export default class AvatarModule extends Component {
               prefixClass: 'iconfont icon-home',
               size: 25,
             }}
-            onClick={() => this.handleAdminItemClick()}
+            onClick={this.handleAdminItemClick.bind(this)}
           />
           <AtListItem
             title='管理模块3'
@@ -76,7 +76,7 @@ export default class AvatarModule extends Component {
               prefixClass: 'iconfont icon-home',
               size: 25,
             }}
-            onClick={() => this.handleAdminItemClick()}
+            onClick={this.handleAdminItemClick.bind(this)}
           />
           <AtListItem
             title='管理模块4'
@@ -87,7 +87,7 @@ export default class AvatarModule extends Component {
               prefixClass: 'iconfont icon-home',
               size: 25,
             }}
-            onClick={() => this.handleAdminItemClick()}
+            onClick={this.handleAdminItemClick.bind(this)}
           />
         </AtList>
       </View>
