@@ -7,7 +7,6 @@ import VPageHome from './components/VPageHome/index';
 import VPageMine from './components/VPageMine/index';
 import VPageDiscover from './components/VPageDiscover/index';
 import { 
-  CheckLogin, 
   Throttle
 } from '@/kits/decorator/index';
 
@@ -88,9 +87,6 @@ export default class Main extends Component<IProps, IState> {
   //////////////////////////////////////////////////
   // onLoad之前
   componentWillMount () {
-    // 注册事件
-    this.RegisterEvents();
-
     const m_objPageParams =  this.$router.params;
     const {
       setMainPageSelect
@@ -109,20 +105,29 @@ export default class Main extends Component<IProps, IState> {
 
   // onLoad之后
   componentDidMount () { 
-    console.log('MainPage componentDidMount.');
+    
   }
 
   // onUnload
   componentWillUnmount () { 
+    console.log('MainPage componentWillUnmount.');
     // 注销事件
     this.UnregisterEvents();
   }
 
   // onShow
-  componentDidShow () { }
+  componentDidShow () { 
+    console.log('MainPage componentDidShow.');
+    // 注册事件
+    this.RegisterEvents();
+  }
 
   // onHide
-  componentDidHide () { }
+  componentDidHide () { 
+    console.log('MainPage componentDidHide.');
+    // 注销事件
+    this.UnregisterEvents();
+  }
 
   // 下拉刷新
   onPullDownRefresh () { }
@@ -133,8 +138,6 @@ export default class Main extends Component<IProps, IState> {
   // 被动分享生命周期
   onShareAppMessage (res) { }
 
-
-
   //////////////////////////////////////////////////
   // 自定义函数
   //////////////////////////////////////////////////
@@ -144,14 +147,12 @@ export default class Main extends Component<IProps, IState> {
     Taro.eventCenter.on('show-login-dialog', () => {
       this.setShowLoginDialog(true);
     });
-
   }
 
   // 注销事件
   UnregisterEvents () {
     // 登录交互事件
     Taro.eventCenter.off('show-login-dialog');
-
   }
 
   // 设置登录弹窗展示/隐藏

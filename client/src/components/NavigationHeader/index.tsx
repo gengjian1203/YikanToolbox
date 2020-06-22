@@ -39,8 +39,6 @@ export default class NavigationHeader extends Component<any, any> {
     if (!isShowIcon) {
       return;
     }
-
-    console.log('handleLeftIconClick', objPageInfo, objAppInfo);
     if (objPageInfo.length === 1) {
       // 首页
       Taro.reLaunch({

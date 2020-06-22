@@ -40,7 +40,9 @@ function CheckLogin(arrFunc: Array<string> = []) {
                   //   throw new Error(`Can't find ${strFunc} !`);
                   //   return {};
                   // }
+                  // 没有登录缓存，则弹出登录弹窗消息
                   Taro.eventCenter.trigger('show-login-dialog');
+                  return {};
                 }
               } 
               // 其他方法 正常执行
