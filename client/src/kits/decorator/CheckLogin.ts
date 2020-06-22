@@ -1,4 +1,6 @@
+import Taro, { Events } from '@tarojs/taro';
 import StorageManager from '@/manager/StorageManager';
+
 // CheckLogin
 // 检验在指定函数中，用户是否已经登录。登录则正常执行，如果未登录则走登录流程
 // 使用方式
@@ -8,10 +10,10 @@ function CheckLogin(arrFunc: Array<string> = []) {
     if (target.prototype) {
       // 拷贝对象，获取类中的所有方法
       const desc = Object.getOwnPropertyDescriptors(target.prototype);
-      // const strFunc = 'setShowLoginDialog';
-      // const funFunc = desc[strFunc].value;
+      // console.log('CheckLogin--', target.prototype);
       // 遍历该对象中所有方法
       for (let key of Object.keys(desc)) {
+        // console.log('CheckLogin-', key);
         const func = desc[key].value;
         if (typeof func === 'function') {
           // 修改对象的现有属性key，并且返回这个对象
@@ -27,17 +29,18 @@ function CheckLogin(arrFunc: Array<string> = []) {
                   return res;    
                 } else {
                   // 没有登录缓存，则弹出登录弹窗
-                  const strFunc = 'setShowLoginDialog';
-                  if (desc[strFunc] && desc[strFunc].value && typeof desc[strFunc].value == 'function') {
-                    const funFunc = desc[strFunc].value; 
-                    const arrParams = [true]; // 拼凑传入参数
-                    const res = funFunc.apply(this, arrParams);
-                    return res;
-                  } else {
-                    // 异常错误
-                    throw new Error(`Can't find ${strFunc} !`);
-                    return {};
-                  }
+                  // const strFunc = 'setShowLoginDialog';
+                  // if (desc[strFunc] && desc[strFunc].value && typeof desc[strFunc].value == 'function') {
+                  //   const funFunc = desc[strFunc].value; 
+                  //   const arrParams = [true]; // 拼凑传入参数
+                  //   const res = funFunc.apply(this, arrParams);
+                  //   return res;
+                  // } else {
+                  //   // 异常错误
+                  //   throw new Error(`Can't find ${strFunc} !`);
+                  //   return {};
+                  // }
+                  Taro.eventCenter.trigger('show-login-dialog');
                 }
               } 
               // 其他方法 正常执行

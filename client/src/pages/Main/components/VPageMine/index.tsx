@@ -1,20 +1,34 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Text } from '@tarojs/components';
-
+import { 
+  CheckLogin,
+  Throttle 
+} from '@/kits/decorator/index';
 import AvatarModule from './components/AvatarModule/index';
 import KitsModule from './components/KitsModule/index';
 import AdminModule from './components/AdminModule/index';
 
 import './index.scss'
 
-export default class VPageHome extends Component<any, any> {
+type PageStateProps = { };
+
+type PageDispatchProps = { };
+
+type PageOwnProps = { };
+
+type PageState = { };
+
+type IProps = PageStateProps & PageDispatchProps & PageOwnProps;
+
+type IState = PageState;
+
+@CheckLogin([])
+export default class VPageHome extends Component<IProps, IState> {
   static options = {
     addGlobalClass: true
   }
-  
-  static defaultProps = {
-    setShowLoginDialog: () => {}
-  }
+
+  static defaultProps = { }
 
   /**
    * 指定config的类型声明为: Taro.Config

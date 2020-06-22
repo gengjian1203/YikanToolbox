@@ -1,5 +1,6 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Image } from '@tarojs/components';
+import classNames from 'classnames'
 import { 
   CheckLogin,
   Throttle 
@@ -7,9 +8,21 @@ import {
 
 import './index.scss';
 
+type PageStateProps = { };
+
+type PageDispatchProps = { };
+
+type PageOwnProps = { };
+
+type PageState = { };
+
+type IProps = PageStateProps & PageDispatchProps & PageOwnProps;
+
+type IState = PageState;
+
 @Throttle(['handleAvatarClick'], 2000)
-@CheckLogin([])
-export default class AvatarModule extends Component {
+@CheckLogin(['handleAvatarClick', 'handleCalenderClick'])
+export default class AvatarModule extends Component<IProps, IState> {
   static options = {
     addGlobalClass: true
   }
@@ -63,7 +76,10 @@ export default class AvatarModule extends Component {
         
         {/* 打卡日历按钮 */}
         <View 
-          className='float-calendar iconfont icon-calender red-tip'
+          className={classNames('float-calendar', 
+                                'iconfont', 
+                                'icon-calender', 
+                                true ? 'red-tip' : '')}
           onClick={this.handleCalenderClick.bind(this)}
         >
         </View>

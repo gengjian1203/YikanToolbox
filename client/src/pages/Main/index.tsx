@@ -57,7 +57,7 @@ type IState = PageState;
   })
 )
 @Throttle([], 2000)
-@CheckLogin(['handleTestClick'])
+// @CheckLogin(['handleTestClick'])
 export default class Main extends Component<IProps, IState> {
   config = {
     // 支持下拉刷新
@@ -88,6 +88,9 @@ export default class Main extends Component<IProps, IState> {
   //////////////////////////////////////////////////
   // onLoad之前
   componentWillMount () {
+    // 注册事件
+    this.RegisterEvents();
+
     const m_objPageParams =  this.$router.params;
     const {
       setMainPageSelect
@@ -97,7 +100,6 @@ export default class Main extends Component<IProps, IState> {
       m_objPageParams: this.$router.params
     });
 
-    // console.log('Main componentDidMount', this.$router.params, m_objPageParams);
     // 渲染显示页面
     if (m_objPageParams.indexSelectVPage) {
       const nSelectVPage = parseInt(m_objPageParams.indexSelectVPage);
@@ -111,7 +113,10 @@ export default class Main extends Component<IProps, IState> {
   }
 
   // onUnload
-  componentWillUnmount () { }
+  componentWillUnmount () { 
+    // 注销事件
+    this.UnregisterEvents();
+  }
 
   // onShow
   componentDidShow () { }
@@ -128,9 +133,27 @@ export default class Main extends Component<IProps, IState> {
   // 被动分享生命周期
   onShareAppMessage (res) { }
 
+
+
   //////////////////////////////////////////////////
   // 自定义函数
   //////////////////////////////////////////////////
+  // 注册事件
+  RegisterEvents () {
+    // 登录交互事件
+    Taro.eventCenter.on('show-login-dialog', () => {
+      this.setShowLoginDialog(true);
+    });
+
+  }
+
+  // 注销事件
+  UnregisterEvents () {
+    // 登录交互事件
+    Taro.eventCenter.off('show-login-dialog');
+
+  }
+
   // 设置登录弹窗展示/隐藏
   setShowLoginDialog (isShow: boolean) {
     console.log('setShowLoginDialog', isShow);
@@ -187,11 +210,6 @@ export default class Main extends Component<IProps, IState> {
         {/* 页面内容 */}
         <View className='main-content'>
           {renderVPage}
-          <View
-            onClick={this.handleTestClick.bind(this)}
-          >
-            点击测试
-          </View>
         </View>
         {/* 弹出内容 */}
         { 

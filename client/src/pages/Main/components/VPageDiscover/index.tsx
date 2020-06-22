@@ -2,13 +2,21 @@ import Taro, { Component } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import './index.scss'
 
-export default class VPageDiscover extends Component<any, any> {
+type PageStateProps = { };
+
+type PageDispatchProps = { };
+
+type PageOwnProps = { };
+
+type PageState = { };
+
+type IProps = PageStateProps & PageDispatchProps & PageOwnProps;
+
+type IState = PageState;
+
+export default class VPageDiscover extends Component<IProps, IState> {
   static options = {
     addGlobalClass: true
-  }
-  
-  static defaultProps = {
-    setShowLoginDialog: () => {}
   }
 
   /**

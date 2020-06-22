@@ -5,7 +5,19 @@ import TitleBar from '@/components/TitleBar/index';
 
 import './index.scss';
 
-export default class AvatarModule extends Component {
+type PageStateProps = { };
+
+type PageDispatchProps = { };
+
+type PageOwnProps = { };
+
+type PageState = { };
+
+type IProps = PageStateProps & PageDispatchProps & PageOwnProps;
+
+type IState = PageState;
+
+export default class AvatarModule extends Component<IProps, IState> {
   static options = {
     addGlobalClass: true
   }

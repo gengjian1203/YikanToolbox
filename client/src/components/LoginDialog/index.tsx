@@ -82,9 +82,8 @@ export default class LoginDialog extends Component<IProps, IState> {
           className='login-dialog-mask'
           onClick={this.handleMaskClick.bind(this)}
         >
-          <View className={classNames(m_isShow ? 
-                                      'fade-in-from-btottom login-dialog-content' : 
-                                      'fade-out-from-btottom login-dialog-content')}
+          <View className={classNames('login-dialog-content', 
+                                      m_isShow ? 'fade-in-from-btottom' : 'fade-out-from-btottom')}
           >
               <View className='content-text'>
                 登录后即可体验更多服务
