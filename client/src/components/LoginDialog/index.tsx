@@ -56,14 +56,12 @@ export default class LoginDialog extends Component<IProps, IState> {
   // 点击蒙板
   handleMaskClick (e: Event) {
     e.stopPropagation();
-    console.log('handleMaskClick');
     this.setShow(false);
   }
 
   // 点击登录按钮
   handleLoginClick (e: Event) {
     e.stopPropagation();
-    console.log('handleLoginClick');
     const strKey = 'memberInfo';
     StorageManager.getInstance().setStorageSync(strKey, {
       memberId: 'mem-12345'
@@ -89,11 +87,17 @@ export default class LoginDialog extends Component<IProps, IState> {
                 登录后即可体验更多服务
               </View>
               <Button 
-                className='content-button'
+                className='button-submit'
                 openType='getUserInfo'
                 onClick={this.handleLoginClick.bind(this)}
               >
                 微信登录
+              </Button>
+              <Button 
+                className='button-cancel'
+                onClick={this.handleMaskClick.bind(this)}
+              >
+                取消登录
               </Button>
             </View>
         </View>
