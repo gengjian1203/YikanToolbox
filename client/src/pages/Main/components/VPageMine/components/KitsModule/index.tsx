@@ -28,6 +28,52 @@ export default class AvatarModule extends Component<IProps, IState> {
   static options = {
     addGlobalClass: true
   }
+
+  state = {
+    // 存储工具列表信息
+    arrListData: [{
+      value: '工具1',
+      iconInfo: {
+        value: '',
+        color: 'red',
+        prefixClass: 'iconfont icon-home',
+        size: 50,
+      }
+    }, {
+      value: '工具2',
+      iconInfo: {
+        value: '',
+        color: 'yellow',
+        prefixClass: 'iconfont icon-home',
+        size: 50,
+      }
+    }, {
+      value: '工具3',
+      iconInfo: {
+        value: '',
+        color: 'orange',
+        prefixClass: 'iconfont icon-home',
+        size: 50,
+      }
+    }, {
+      value: '工具4',
+      iconInfo: {
+        value: '',
+        color: 'green',
+        prefixClass: 'iconfont icon-home',
+        size: 50,
+      }
+    }, {
+      value: '工具5',
+      iconInfo: {
+        value: '',
+        color: 'glod',
+        prefixClass: 'iconfont icon-home',
+        size: 50,
+      }
+    }]
+  
+  }
   
   /**
    * 指定config的类型声明为: Taro.Config
@@ -54,6 +100,10 @@ export default class AvatarModule extends Component<IProps, IState> {
   }
 
   render () {
+    const {
+      arrListData
+    } = this.state;
+
     return (
       <View className='kits-module-wrap'>
         {/* 标题条 */}
@@ -65,39 +115,7 @@ export default class AvatarModule extends Component<IProps, IState> {
           mode='square'
           hasBorder={true}
           columnNum={3}
-          data={[{
-            value: '工具1',
-            iconInfo: {
-              value: '',
-              color: 'red',
-              prefixClass: 'iconfont icon-home',
-              size: 50,
-            }
-          }, {
-            value: '工具2',
-            iconInfo: {
-              value: '',
-              color: 'yellow',
-              prefixClass: 'iconfont icon-home',
-              size: 50,
-            }
-          }, {
-            value: '工具3',
-            iconInfo: {
-              value: '',
-              color: 'orange',
-              prefixClass: 'iconfont icon-home',
-              size: 50,
-            }
-          }, {
-            value: '工具4',
-            iconInfo: {
-              value: '',
-              color: 'green',
-              prefixClass: 'iconfont icon-home',
-              size: 50,
-            }
-          }]}
+          data={arrListData}
           onClick={this.handleKitsItemClick.bind(this)}
         />
       </View>

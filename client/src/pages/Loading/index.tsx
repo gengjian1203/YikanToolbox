@@ -2,7 +2,7 @@ import Taro, { Component } from '@tarojs/taro';
 import { View } from '@tarojs/components';
 
 import GlobalDataManager from '@/manager/GlobalDataManager';
-import router2url from '@/kits/format/router2url';
+import { router2url } from '@/kits/format/index';
 
 import './index.scss'
 

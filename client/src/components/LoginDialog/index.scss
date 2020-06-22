@@ -53,6 +53,11 @@
         background-color: $color-primary;
       }
 
+      .button-submit-hover {
+        color: lighten($color-white, 50%);
+        background-color: lighten($color-primary, 20%);
+      }
+
       .button-cancel {
         display: flex;
         flex-direction: row;
@@ -65,6 +70,11 @@
         font-size: $f3;
         color: $color-text-primary;
         background-color: $color-white;
+      }
+
+      .button-cancel-hover {
+        color: lighten($color-text-primary, 50%);
+        background-color: lighten($color-white, 20%);
       }
     }
   }

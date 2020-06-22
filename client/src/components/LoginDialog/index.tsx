@@ -59,6 +59,12 @@ export default class LoginDialog extends Component<IProps, IState> {
     this.setShow(false);
   }
 
+  // 滑动蒙板
+  handleMaskTouchMove (e: Event) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+
   // 点击登录按钮
   handleLoginClick (e: Event) {
     e.stopPropagation();
@@ -79,6 +85,7 @@ export default class LoginDialog extends Component<IProps, IState> {
         <View 
           className='login-dialog-mask'
           onClick={this.handleMaskClick.bind(this)}
+          onTouchMove={this.handleMaskTouchMove.bind(this)}
         >
           <View className={classNames('login-dialog-content', 
                                       m_isShow ? 'fade-in-from-btottom' : 'fade-out-from-btottom')}
@@ -88,13 +95,14 @@ export default class LoginDialog extends Component<IProps, IState> {
               </View>
               <Button 
                 className='button-submit'
-                openType='getUserInfo'
+                hoverClass='button-submit-hover'
                 onClick={this.handleLoginClick.bind(this)}
               >
                 微信登录
               </Button>
               <Button 
                 className='button-cancel'
+                hoverClass='button-cancel-hover'
                 onClick={this.handleMaskClick.bind(this)}
               >
                 取消登录

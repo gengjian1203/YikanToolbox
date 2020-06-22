@@ -2,12 +2,12 @@
 
 // 底部移入动画
 .fade-in-from-btottom {
-  animation: FadeInFromBtottom 0.2s;
+  animation: FadeInFromBtottom 0.2s forwards;
 }
 
 // 底部移出动画
 .fade-out-from-btottom {
-  animation: FadeOutFromBtottom 0.2s;
+  animation: FadeOutFromBtottom 0.2s forwards;
 }
 
 @keyframes FadeInFromBtottom {
