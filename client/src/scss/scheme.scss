@@ -13,6 +13,8 @@ $color-primary: #ff9900; // 品牌颜色
 $color-secondary: lighten($color-primary, 10%);
 $color-tertiary: lighten($color-primary, 20%);
 
+$color-white: #ffffff;
+
 $color-line: #ececec; // 分割线颜色
 $color-bg: #ebebeb; // 背景色
 $color-mask: rgba(0, 0, 0, 0.3);  // 蒙板颜色

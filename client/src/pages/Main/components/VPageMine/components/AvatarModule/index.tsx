@@ -1,11 +1,14 @@
 import Taro, { Component } from '@tarojs/taro';
-import { View, Text } from '@tarojs/components';
-import { AtAvatar } from 'taro-ui';
-import { Throttle } from '@/kits/decorator/index';
+import { View, Image } from '@tarojs/components';
+import { 
+  CheckLogin,
+  Throttle 
+} from '@/kits/decorator/index';
 
 import './index.scss';
 
 @Throttle(['handleAvatarClick'], 2000)
+@CheckLogin([])
 export default class AvatarModule extends Component {
   static options = {
     addGlobalClass: true
@@ -31,8 +34,15 @@ export default class AvatarModule extends Component {
   componentDidHide () { }
 
   // 点击头像，拉起登录授权
-  handleAvatarClick () {
+  handleAvatarClick (e) {
+    e.stopPropagation();
     console.log('handleAvatarClick');
+  }
+
+  // 点击日历，实现打卡
+  handleCalenderClick (e) {
+    e.stopPropagation();
+    console.log('handleCalenderClick');
   }
 
   render () {
@@ -42,20 +52,20 @@ export default class AvatarModule extends Component {
         onClick={this.handleAvatarClick.bind(this)}
       >
         {/* 头像 */}
-        <AtAvatar
-          className='content-avatar'
-          size='large'
-          circle={true}
-          image=''
-          text='头像'
-        />
+        {
+          true ? <View className='content-avatar iconfont icon-avatar'></View>
+               : <Image className='content-avatar' mode='widthFix' src='https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83er6JJibWSWCgr0Gh9aNEoArt77vjb875bkIfEkAic8UroEW8lgp7vfvZB7a9DW8OwoIB5oicngaNf7icg/132'/>
+        }
         {/* 昵称 */}
         <View className='content-name'>
           {'请点击头像进行登录'}
         </View>
         
-        {/* 浮动菜单按钮 */}
-        <View className='float-menu iconfont icon-home'>
+        {/* 打卡日历按钮 */}
+        <View 
+          className='float-calendar iconfont icon-calender red-tip'
+          onClick={this.handleCalenderClick.bind(this)}
+        >
         </View>
       </View>
     )

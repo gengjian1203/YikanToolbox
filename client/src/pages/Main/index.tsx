@@ -5,8 +5,11 @@ import TabbarBottom from '@/components/TabbarBottom/index';
 import LoginDialog from '@/components/LoginDialog/index';
 import VPageHome from './components/VPageHome/index';
 import VPageMine from './components/VPageMine/index';
-import VPageStore from './components/VPageStore/index';
-import { CheckLogin } from '@/kits/decorator/index';
+import VPageDiscover from './components/VPageDiscover/index';
+import { 
+  CheckLogin, 
+  Throttle
+} from '@/kits/decorator/index';
 
 import { 
   connect 
@@ -53,6 +56,7 @@ type IState = PageState;
     }
   })
 )
+@Throttle([], 2000)
 @CheckLogin(['handleTestClick'])
 export default class Main extends Component<IProps, IState> {
   config = {
@@ -65,7 +69,7 @@ export default class Main extends Component<IProps, IState> {
   }
 
   state = {
-    m_arrVPageTitle: ['首页', '拼团', '我的'],    // 底部导航名称常量
+    m_arrVPageTitle: ['首页', '发现', '我的'],    // 底部导航名称常量
     m_nSelectVPage: 0,                          // 渲染索引值
     m_objPageParams: {},                        // 页面接收参数
     m_isShowLoginDlg: false,                    // 是否展示登录弹窗
@@ -160,7 +164,7 @@ export default class Main extends Component<IProps, IState> {
         break;
       }
       case 1: {
-        renderVPage = (<VPageStore setShowLoginDialog={this.setShowLoginDialog.bind(this)}/>);
+        renderVPage = (<VPageDiscover setShowLoginDialog={this.setShowLoginDialog.bind(this)}/>);
         break;
       }
       case 2: {

@@ -70,9 +70,9 @@ export default class TabbarBottom extends Component<IProps, IState> {
           iconType: 'iconfont icon-home', 
           selectedIconType: 'iconfont icon-home-select' 
         }, { 
-          title: '拼团', 
-          iconType: 'iconfont icon-store', 
-          selectedIconType: 'iconfont icon-store-select' 
+          title: '发现', 
+          iconType: 'iconfont icon-discover', 
+          selectedIconType: 'iconfont icon-discover-select' 
         }, { 
           title: '我的', 
           iconType: 'iconfont icon-mine', 

@@ -33,6 +33,13 @@ export default class NavigationHeader extends Component<any, any> {
   componentDidHide() {}
 
   handleLeftIconClick = (objPageInfo, objAppInfo) => {
+    const { 
+      isShowIcon
+    } = this.props;
+    if (!isShowIcon) {
+      return;
+    }
+
     console.log('handleLeftIconClick', objPageInfo, objAppInfo);
     if (objPageInfo.length === 1) {
       // 首页
@@ -50,9 +57,10 @@ export default class NavigationHeader extends Component<any, any> {
       strTitle,
       isShowIcon
     } = this.props;
-    const objSystemInfo = m_managerGlobalData.objSystemInfo;
-    const objAppInfo = m_managerGlobalData.objAppInfo;
-    const objPageInfo = Taro.getCurrentPages();
+    const objSystemInfo = m_managerGlobalData.objSystemInfo;    // 系统信息
+    const objAppInfo = m_managerGlobalData.objAppInfo;          // 小程序信息
+    const objPageInfo = Taro.getCurrentPages();                 // 路由信息
+    const nAtNavBarHeight = 43;                                 // AtNavBar导航栏高度
     
     let strIcon = '';
     if (isShowIcon) {
@@ -67,14 +75,20 @@ export default class NavigationHeader extends Component<any, any> {
 
     return (
       <View className='navigation-header-wrap'>
-        <View style={`height: ${objSystemInfo.statusBarHeight}px;`}>
+        {/* 绝对定位浮于页面顶部 */}
+        <View className='navigation-header-content'>
+          <View style={`height: ${objSystemInfo.statusBarHeight}px;`}>
+          </View>
+          <AtNavBar
+            border={false}
+            title={strTitle}
+            leftIconType={strIcon}
+            onClickLeftIcon={() => this.handleLeftIconClick(objPageInfo, objAppInfo)}
+          />
         </View>
-        <AtNavBar
-          border={false}
-          title={strTitle}
-          leftIconType={strIcon}
-          onClickLeftIcon={() => this.handleLeftIconClick(objPageInfo, objAppInfo)}
-        />
+        {/* 占位 */}
+        <View style={`height: ${objSystemInfo.statusBarHeight + nAtNavBarHeight}px;`}>
+        </View>
       </View>
     )
   }
