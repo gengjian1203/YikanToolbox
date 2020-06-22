@@ -6,6 +6,7 @@ import LoginDialog from '@/components/LoginDialog/index';
 import VPageHome from './components/VPageHome/index';
 import VPageMine from './components/VPageMine/index';
 import VPageStore from './components/VPageStore/index';
+import { CheckLogin } from '@/kits/decorator/index';
 
 import { 
   connect 
@@ -52,6 +53,7 @@ type IState = PageState;
     }
   })
 )
+@CheckLogin(['handleTestClick'])
 export default class Main extends Component<IProps, IState> {
   config = {
     // 支持下拉刷新
@@ -135,7 +137,8 @@ export default class Main extends Component<IProps, IState> {
 
   // 测试按钮
   handleTestClick () {
-    this.setShowLoginDialog(true);
+    // this.setShowLoginDialog(true);
+    console.log('测试按钮功能');
   }
 
   // 

@@ -1,69 +1,54 @@
-const LIFE_CYCLE_MAP = ['willMount', 'didMount', 'didShow'];
-
-function CheckLogin(lifecycle = 'willMount') {
-  // 异常规避提醒
-  if (LIFE_CYCLE_MAP.indexOf(lifecycle) < 0) {
-    console.warn(
-      `传入的生命周期不存在, 鉴权判断异常 ===========> $_{lifecycle}`
-    );
-    return Component => Component;
-  }
-    
-  return function withLoginComponent(Component) {
-    // 避免H5兼容异常
-    if (tool.isH5()) {
-      return Component;
-    }
-      
-    // 这里还可以通过redux来获取本地用户信息，在用户一次登录之后，其他需要鉴权的页面可以用判断跳过流程
-    // @connect(({ user }) => ({
-    //   userInfo: user.userInfo,
-    // }))
-    return class CheckLogin extends Component {
-      constructor(props) {
-        super(props);
-      }
- 
-      async componentWillMount() {
-        if (super.componentWillMount) {
-          if (lifecycle === LIFE_CYCLE_MAP[0]) {
-            const res = await this.$_autoLogin();
-            if (!res) return;
-          }
- 
-          super.componentWillMount();
-        }
-      }
- 
-      async componentDidMount() {
-        if (super.componentDidMount) {
-          if (lifecycle === LIFE_CYCLE_MAP[1]) {
-            const res = await this.$_autoLogin();
-            if (!res) return;
-          }
- 
-          super.componentDidMount();
-        }
-      }
- 
-      async componentDidShow() {
-        if (super.componentDidShow) {
-          if (lifecycle === LIFE_CYCLE_MAP[2]) {
-            const res = await this.$_autoLogin();
-            if (!res) return;
-          }
- 
-          super.componentDidShow();
+import StorageManager from '@/manager/StorageManager';
+// CheckLogin
+// 检验在指定函数中，用户是否已经登录。登录则正常执行，如果未登录则走登录流程
+// 使用方式
+// @CheckLogin(['handleTestClick'])
+function CheckLogin(arrFunc: Array<string> = []) {
+  return function CheckLogin(target, key, descriptor) {
+    if (target.prototype) {
+      // 拷贝对象，获取类中的所有方法
+      const desc = Object.getOwnPropertyDescriptors(target.prototype);
+      // const strFunc = 'setShowLoginDialog';
+      // const funFunc = desc[strFunc].value;
+      // 遍历该对象中所有方法
+      for (let key of Object.keys(desc)) {
+        const func = desc[key].value;
+        if (typeof func === 'function') {
+          // 修改对象的现有属性key，并且返回这个对象
+          Object.defineProperty(target.prototype, key, {
+            value(...args: any[]) {
+              // 指定方法 如果有登录缓存，则正常执行，如果没有登录缓存，则弹出登录弹窗
+              if (arrFunc && arrFunc.indexOf(key) > -1) {
+                const strKey = 'memberInfo';
+                const objMemberInfo = StorageManager.getInstance().getStorageSync(strKey);
+                if (objMemberInfo && objMemberInfo.memberId) {
+                  // 有登录缓存，则正常执行
+                  const res = func.apply(this, args);
+                  return res;    
+                } else {
+                  // 没有登录缓存，则弹出登录弹窗
+                  const strFunc = 'setShowLoginDialog';
+                  if (desc[strFunc] && desc[strFunc].value && typeof desc[strFunc].value == 'function') {
+                    const funFunc = desc[strFunc].value; 
+                    const arrParams = [true]; // 拼凑传入参数
+                    const res = funFunc.apply(this, arrParams);
+                    return res;
+                  } else {
+                    // 异常错误
+                    throw new Error(`Can't find ${strFunc} !`);
+                    return {};
+                  }
+                }
+              } 
+              // 其他方法 正常执行
+              const res = func.apply(this, args);
+              return res;
+            }
+          });
         }
       }
     }
-      
-    // $_autoLogin = () => {
-    //   // ...这里是登录逻辑
-    //   console.log('llllllogin...');
-    // }
-  }
+  } as any
 }
-
 
 export default CheckLogin;

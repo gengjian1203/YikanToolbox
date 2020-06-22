@@ -15,7 +15,7 @@ function Demo(arrFunc: Array<string> = [], num: Number = 9999) {
           // 修改对象的现有属性key，并且返回这个对象
           Object.defineProperty(target.prototype, key, {
             value(...args: any[]) {
-              // 指定方法则屏蔽原方法，打印个参数
+              // 指定方法 屏蔽原方法，打印个参数
               if (arrFunc && arrFunc.indexOf(key) > -1) {
                 console.log(`${key} - ${num}`);
                 return {};

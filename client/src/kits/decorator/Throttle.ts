@@ -31,7 +31,7 @@ function Throttle(arrFunc: Array<string> = [], gapTime: Number = 0) {
                   return {};
                 }
               } 
-              // 其他方法正常执行
+              // 其他方法 正常执行
               const res = func.apply(this, args);    
               return res;
             }

@@ -1,6 +1,7 @@
-import Taro, { Component } from "@tarojs/taro";
+import Taro, { Component } from '@tarojs/taro';
 import classNames from 'classnames'
-import { View, Button } from "@tarojs/components";
+import { View, Button } from '@tarojs/components';
+import StorageManager from '@/manager/StorageManager';
 
 import './index.scss';
 
@@ -63,6 +64,10 @@ export default class LoginDialog extends Component<IProps, IState> {
   handleLoginClick (e: Event) {
     e.stopPropagation();
     console.log('handleLoginClick');
+    const strKey = 'memberInfo';
+    StorageManager.getInstance().setStorageSync(strKey, {
+      memberId: 'mem-12345'
+    });
     this.setShow(false);
   }
 
