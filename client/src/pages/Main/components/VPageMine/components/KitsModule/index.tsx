@@ -3,6 +3,11 @@ import { View } from '@tarojs/components';
 import { AtGrid } from 'taro-ui';
 import TitleBar from '@/components/TitleBar/index';
 
+import { 
+  CheckLogin,
+  Throttle 
+} from '@/kits/decorator/index';
+
 import './index.scss';
 
 type PageStateProps = { };
@@ -17,6 +22,8 @@ type IProps = PageStateProps & PageDispatchProps & PageOwnProps;
 
 type IState = PageState;
 
+@Throttle(['handleKitsItemClick'], 1000)
+@CheckLogin(['handleKitsItemClick'])
 export default class AvatarModule extends Component<IProps, IState> {
   static options = {
     addGlobalClass: true

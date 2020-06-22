@@ -20,7 +20,7 @@ type IProps = PageStateProps & PageDispatchProps & PageOwnProps;
 
 type IState = PageState;
 
-@Throttle(['handleAvatarClick'], 2000)
+@Throttle(['handleAvatarClick'], 1000)
 @CheckLogin(['handleAvatarClick', 'handleCalenderClick'])
 export default class AvatarModule extends Component<IProps, IState> {
   static options = {

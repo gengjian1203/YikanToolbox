@@ -2,6 +2,10 @@ import Taro, { Component } from '@tarojs/taro';
 import { View } from '@tarojs/components';
 import { AtList, AtListItem } from 'taro-ui';
 import TitleBar from '@/components/TitleBar/index';
+import { 
+  CheckLogin,
+  Throttle 
+} from '@/kits/decorator/index';
 
 import './index.scss';
 
@@ -17,6 +21,8 @@ type IProps = PageStateProps & PageDispatchProps & PageOwnProps;
 
 type IState = PageState;
 
+@Throttle(['handleAdminItemClick'], 1000)
+@CheckLogin(['handleAdminItemClick'])
 export default class AvatarModule extends Component<IProps, IState> {
   static options = {
     addGlobalClass: true
